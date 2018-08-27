@@ -1,0 +1,30 @@
+<ion-card color="white">
+  <ion-card-content>
+    <h2 class="header-text">Bitte logge dich ein!</h2>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label position="stacked" color="secondary">Email</ion-label>
+          <ion-input [(ngModel)]="userData.email" name="email" type="email" spellcheck="false" autocapitalize="off" placeholder="Deine Email"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" color="secondary">Password</ion-label>
+          <ion-input [(ngModel)]="userData.password" name="password" type="password" placeholder="Dein Passwort" required>
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-row responsive-sm>
+        <ion-col>
+          <ion-button type="submit" expand="block">Login</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button href="login/register" color="light" expand="block">Account erstellen</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card-content>
+</ion-card>

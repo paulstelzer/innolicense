@@ -1,0 +1,72 @@
+<div class="table-responsive">
+  <table class="table table-hover" cdk-table [dataSource]="dataOnPage$" matSort (matSortChange)="sortData($event)">
+
+    <!-- Licensenumber Column -->
+    <ng-container cdkColumnDef="id">
+      <th mat-sort-header cdk-header-cell *cdkHeaderCellDef> Lizenznummer </th>
+      <td cdk-cell *cdkCellDef="let row"> {{row.id}} </td>
+    </ng-container>
+
+    <!-- UserId Column -->
+    <ng-container cdkColumnDef="userId">
+      <th mat-sort-header cdk-header-cell *cdkHeaderCellDef> User ID </th>
+      <td cdk-cell *cdkCellDef="let row"> {{row.userId}} </td>
+    </ng-container>
+
+    <!-- LicenseName Column -->
+    <ng-container cdkColumnDef="licenseName">
+      <th mat-sort-header cdk-header-cell *cdkHeaderCellDef> Lizenzname </th>
+      <td cdk-cell *cdkCellDef="let row"> {{row.licenseName}} </td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container cdkColumnDef="status">
+      <th mat-sort-header cdk-header-cell *cdkHeaderCellDef> Status </th>
+      <td cdk-cell *cdkCellDef="let row"> {{row.status}} </td>
+    </ng-container>
+
+    <!-- Valid until Column -->
+    <ng-container cdkColumnDef="validUntil">
+      <th mat-sort-header cdk-header-cell *cdkHeaderCellDef> Gültig bis </th>
+      <td cdk-cell *cdkCellDef="let row"> {{row.validUntil | date}} </td>
+    </ng-container>
+
+    <!-- Support until Column -->
+    <ng-container cdkColumnDef="supportUntil">
+      <th mat-sort-header cdk-header-cell *cdkHeaderCellDef> Support bis </th>
+      <td cdk-cell *cdkCellDef="let row"> {{row.supportUntil | date}} </td>
+    </ng-container>
+
+    <!-- URLS until Column -->
+    <ng-container cdkColumnDef="url">
+      <th cdk-header-cell *cdkHeaderCellDef> URL(s)</th>
+      <td cdk-cell *cdkCellDef="let row"> {{row.url | json}} </td>
+    </ng-container>
+
+    <!-- URLS until Column -->
+    <ng-container cdkColumnDef="createdAt">
+      <th mat-sort-header cdk-header-cell *cdkHeaderCellDef> Erstellt am</th>
+      <td cdk-cell *cdkCellDef="let row"> {{row.createdAt | date}} </td>
+    </ng-container>
+
+    <!-- Update Column -->
+    <ng-container cdkColumnDef="update">
+      <th cdk-header-cell *cdkHeaderCellDef>Funktionen</th>
+      <td cdk-cell *cdkCellDef="let row">
+        <ion-button (click)="update(row.id)">Update</ion-button>
+        <ion-button (click)="copy(row.id)">Nummer kopieren</ion-button>
+      </td>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <tr class="" cdk-header-row *cdkHeaderRowDef="displayedColumns$.value"></tr>
+    <tr cdk-row *cdkRowDef="let row; columns: displayedColumns$.value"></tr>
+
+  </table>
+
+  <ngb-pagination [collectionSize]="tableDataSource$.value.length" [pageSize]="pageSize$.value" [page]="currentPage$.value"
+    (pageChange)="currentPage$.next($event)">
+  </ngb-pagination>
+
+  <!-- <mat-paginator [length]="tableDataSource$.value.length" [pageSize]="pageSize$.value" (page)="changePage($event)" showFirstLastButtons></mat-paginator> -->
+</div>

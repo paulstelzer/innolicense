@@ -1,0 +1,7 @@
+{
+  "name": "innolicense",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,38 @@
+{
+  "name": "innolicense",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run platform\" \"npm run api\"",
+    "platform": "cd client && ionic serve",
+    "api": "cd server && npm run start:dev",
+    "release:major": "gulp --type major && git push origin && git push origin --tags",
+    "release:minor": "gulp --type minor && git push origin && git push origin --tags",
+    "release:patch": "gulp --type patch && git push origin && git push origin --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://paulstelzer@bitbucket.org/paulstelzer/innolicense.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/paulstelzer/innolicense#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.0.0-rc.2",
+    "@babel/preset-env": "^7.0.0-rc.2",
+    "@babel/register": "^7.0.0-rc.2",
+    "@types/gulp-json-editor": "^2.2.31",
+    "generate-changelog": "^1.7.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-git": "^2.8.0",
+    "gulp-json-editor": "^2.4.2",
+    "gulp-shell": "^0.6.5",
+    "minimist": "^1.2.0",
+    "run-sequence": "^2.2.1",
+    "typescript": "^3.0.1"
+  }
+}

@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="plugin"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{productData.name}}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+<ion-content color="light">
+  <ion-card color="white">
+    <ion-card-content>
+      <form #productForm="ngForm" (ngSubmit)="updateProduct(productForm)">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Name des WordPress Plugins</ion-label>
+            <ion-input [(ngModel)]="productData.name" name="name" type="text" spellcheck="false" autocapitalize="off" placeholder="Hier eingeben"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Ordnername des Plugins (bspw. wp-akismet)</ion-label>
+            <ion-input [(ngModel)]="productData.slug" name="slug" type="text" spellcheck="false" autocapitalize="off" placeholder="Hier eingeben">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Version</ion-label>
+            <ion-input [(ngModel)]="productData.version" name="version" type="text" spellcheck="false" autocapitalize="off" placeholder="1.0.0"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Download URL (mit https://)</ion-label>
+            <ion-input [(ngModel)]="productData.downloadUrl" name="downloadUrl" type="text" spellcheck="false" autocapitalize="off" placeholder="https://"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Beschreibung</ion-label>
+            <!--         <ion-input [(ngModel)]="productData.description" name="description" type="text" spellcheck="false" autocapitalize="off" placeholder="Hier eingeben"
+          required>
+        </ion-input> -->
+
+            <div class="full-width" item-content>
+              <quill-editor [(ngModel)]="productData.description" name="description" [modules]="quillModules" [style]="{height: '250px'}"></quill-editor>
+            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Changelog</ion-label>
+            <!--         <ion-input [(ngModel)]="productData.changelog" name="changelog" type="text" placeholder="Hier eingeben">
+        </ion-input> -->
+
+            <div class="full-width" item-content>
+              <quill-editor [(ngModel)]="productData.changelog" name="changelog" [modules]="quillModules" [style]="{height: '250px'}"></quill-editor>
+            </div>
+
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Homepage (mit https://)</ion-label>
+            <ion-input [(ngModel)]="productData.homepage" name="homepage" type="text" spellcheck="false" autocapitalize="off" placeholder="https://">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Benötige WordPress Version</ion-label>
+            <ion-input [(ngModel)]="productData.requires" name="requires" type="text" spellcheck="false" autocapitalize="off" placeholder="4.2">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Getestete WordPress Version</ion-label>
+            <ion-input [(ngModel)]="productData.tested" name="tested" type="text" spellcheck="false" autocapitalize="off" placeholder="5.0">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Autor</ion-label>
+            <ion-input [(ngModel)]="productData.author" name="author" type="text" spellcheck="false" autocapitalize="off" placeholder="Hier eingeben">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Autor Homepage (mit https://)</ion-label>
+            <ion-input [(ngModel)]="productData.authorHomepage" name="authorHomepage" type="text" spellcheck="false" autocapitalize="off"
+              placeholder="https://">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Benachrichtige Nutzer über neue Version?</ion-label>
+
+            <div class="full-width" item-content>
+              <ion-toggle [(ngModel)]="notify" name="notify"></ion-toggle>
+            </div>
+          </ion-item>
+        </ion-list>
+
+        <ion-row responsive-sm>
+          <ion-col>
+            <ion-button type="submit" expand="block">Updaten</ion-button>
+          </ion-col>
+          <ion-col>
+          </ion-col>
+        </ion-row>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

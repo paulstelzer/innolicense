@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="product"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{product.name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="initLicense()">
+        <label *ngIf="!createLicense">Neue Lizenz</label>
+        <label *ngIf="createLicense">Abbrechen</label>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="light">
+  <ng-container *ngIf="!createLicense">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let l of licenses">
+          <app-license-detail [productId]="productId" [licenseId]="l.id"></app-license-detail>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <app-licensenumber-table [productId]="productId"></app-licensenumber-table>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ng-container>
+
+  <ion-card color="white" *ngIf="createLicense">
+    <ion-card-content>
+      <form #productForm="ngForm">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Lizenzname</ion-label>
+            <ion-input [(ngModel)]="licenseData.name" name="name" type="text" spellcheck="false" autocapitalize="off" placeholder="Name der Lizenz"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Wie lange ist die Lizenz gültig (in Tagen) - 0 = unbegrenzt</ion-label>
+            <ion-input [(ngModel)]="licenseData.validTime" name="validTime" type="number" placeholder="Zahl eingeben" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Wie lange soll Support möglich sein (in Tagen) - 0 = unbegrenzt</ion-label>
+            <ion-input [(ngModel)]="licenseData.supportTime" name="supportTime" type="number" placeholder="Zahl eingeben" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Auf wievielen Seiten darf das Produkt installiert werden? - 0 = unbegrenzt</ion-label>
+            <ion-input [(ngModel)]="licenseData.volume" name="volume" type="number" placeholder="Zahl eingeben" required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Feature (mit Komma trennen - ohne Leerzeichen)</ion-label>
+            <ion-input [(ngModel)]="features" name="features" type="text" spellcheck="false" autocapitalize="off" placeholder="Eingeben">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-row responsive-sm>
+          <ion-col>
+            <ion-button (click)="addLicense(productForm)" expand="block">Erstellen</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="initLicense()" color="light" expand="block">Abbrechen</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

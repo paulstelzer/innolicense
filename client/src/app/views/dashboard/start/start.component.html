@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="left"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-button menu="right"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="light">
+  <div class="p-3">
+    <ion-row>
+      <ion-col size="12">
+        <ion-item class="item-custom-background">
+          <ion-label text-wrap>
+            <h1>Willkommen bei {{platformName}},</h1>
+
+            <h2 *ngIf="(currentUser$ | async) as u">{{u.name}}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col sizeSm="12" sizeMd="6">
+        <ion-item class="item-custom-background" href="product" detail>
+          <ion-icon color="primary" name="apps" slot="start"></ion-icon>
+          <ion-label text-wrap>
+            <h3>Meine Produkte</h3>
+            <p>Sieh dir deine Produkte an und füge neue hinzu</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+
+      <ion-col sizeSm="12" sizeMd="6">
+        <ion-item class="item-custom-background" href="plugin" detail>
+          <ion-icon color="primary" name="logo-wordpress" slot="start"></ion-icon>
+          <ion-label text-wrap>
+            <h3>Meine Plugins</h3>
+            <p>Verwalte deine WordPress Plugins und stelle Updates bereit</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+  </div>
+</ion-content>

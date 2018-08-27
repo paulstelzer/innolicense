@@ -1,0 +1,39 @@
+// http://ionicframework.com/docs/theming/
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/colors.css";
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+.split-pane-visible>ion-menu.split-pane-side.menu-enabled {
+    max-width: 270px !important;
+}
+
+.toast-error .toast-wrapper {
+    background: var(--ion-color-danger);
+}
+
+.toast-success .toast-wrapper {
+    background: var(--ion-color-success);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.item-custom-background {
+    background-color: rgba(var(--ion-color-white-rgb),1);
+    width: auto;
+}
+
+.ion-color-white {
+    --ion-color-base: var(--ion-color-white, #fff) !important;
+    --ion-color-base-rgb: var(--ion-color-white-rgb, 56,128,255) !important;
+    --ion-color-contrast: var(--ion-color-white-contrast, #000) !important;
+    --ion-color-contrast-rgb: var(--ion-color-white-contrast-rgb, 255,255,255) !important;
+    --ion-color-shade: var(--ion-color-white-shade, #3171e0) !important;
+    --ion-color-tint: var(--ion-color-white-tint, #4c8dff) !important;
+}

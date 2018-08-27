@@ -1,0 +1,49 @@
+<!-- 
+  <ion-card color="white">
+  <ion-card-content>
+    <h2 class="header-text">Bitte registriere dich!</h2>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label position="stacked" color="secondary">Email</ion-label>
+          <ion-input [(ngModel)]="userData.email" name="email" type="email" spellcheck="false" autocapitalize="off" placeholder="Deine Email"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" color="secondary">Password</ion-label>
+          <ion-input [(ngModel)]="userData.password" name="password" type="password" placeholder="Dein Passwort" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Anbieter?</ion-label>
+          <div class="full-width" item-content>
+            <ion-toggle slot="end" [(ngModel)]="userData.vendor" name="vendor"></ion-toggle>
+          </div>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-row responsive-sm>
+        <ion-col>
+          <ion-button type="submit" expand="block">Registrieren</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button text-wrap href="login" color="light" expand="block">Bereits einen Account?</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card-content>
+</ion-card>
+ -->
+
+<ion-card color="white">
+  <ion-card-content>
+    <h2 class="header-text">Die Registrierung ist nicht möglich!</h2>
+    <ion-col>
+      <ion-button text-wrap href="login" color="primary" expand="block">Jetzt einloggen</ion-button>
+    </ion-col>
+  </ion-card-content>
+</ion-card>

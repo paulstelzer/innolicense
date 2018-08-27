@@ -1,0 +1,60 @@
+<ion-split-pane>
+  <ion-menu menuId="left" type="reveal">
+    <ion-header>
+      <ion-toolbar color="white">
+        <ion-title>{{platformName}}</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list *ngIf="isVendor">
+        <ion-item-divider>
+          <ion-label>
+            Lizenzen
+          </ion-label>
+        </ion-item-divider>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item button [routerDirection]="'root'" [routerLink]="['']" routerLinkActive="highlight">
+            <ion-icon slot="start" name="apps"></ion-icon>
+            <ion-label>
+              Dashboard
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item button [routerDirection]="'root'" [routerLink]="['/product']" routerLinkActive="highlight">
+            <ion-icon slot="start" name="albums"></ion-icon>
+            <ion-label>
+              Produkte
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle auto-hide="false">
+          <ion-item button [routerDirection]="'root'" [routerLink]="['/plugin']" routerLinkActive="highlight">
+            <ion-icon slot="start" name="logo-wordpress"></ion-icon>
+            <ion-label>
+              Plugins
+            </ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item-divider>
+          <ion-label>
+            Account
+          </ion-label>
+        </ion-item-divider>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item button (click)="signOut()">
+            <ion-icon slot="start" name="log-out"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+  <ion-router-outlet main></ion-router-outlet>
+
+
+</ion-split-pane>

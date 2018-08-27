@@ -1,0 +1,157 @@
+<ion-card>
+  <ion-item>
+    <ion-icon name="pin" slot="start"></ion-icon>
+    <ion-label>{{licenseData.name}}</ion-label>
+    <ion-button *ngIf="!editLicense" (click)="editLicense = true" fill="outline" slot="end">Bearbeiten</ion-button>
+  </ion-item>
+
+  <ion-card-content>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label color="primary">WordPress Plugins</ion-label>
+        <ion-button *ngIf="!editPlugin" (click)="editPlugin = true" fill="outline">Ansehen</ion-button>
+        <ion-button *ngIf="editPlugin" (click)="editPlugin = false" fill="outline">Abbrechen</ion-button>
+      </ion-list-header>
+
+      <ion-item-group *ngIf="editPlugin">
+        <ion-item *ngFor="let p of myPlugins">
+          <ion-label>{{p.name}}</ion-label>
+          <ion-toggle slot="end" [(ngModel)]="p.active" (ionChange)="setPlugin($event, p.slug)" [name]="p.slug"></ion-toggle>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label color="primary">Envato Items</ion-label>
+        <ion-button *ngIf="!editEnvato" (click)="editEnvato = true" fill="outline">Ansehen</ion-button>
+        <ion-button *ngIf="editEnvato" (click)="editEnvato = false" fill="outline">Abbrechen</ion-button>
+      </ion-list-header>
+      <ion-item-group *ngIf="editEnvato">
+        <ion-item *ngFor="let e of licenseData.envato">
+          <ion-label>{{e.name}} - Envato ID: {{e.id}} - Lizenz: {{e.licenseType}}</ion-label>
+        </ion-item>
+      </ion-item-group>
+    </ion-list>
+
+    <ng-container *ngIf="editEnvato">
+
+      <form #envatoForm="ngForm">
+        <ion-list no-lines>
+          <ion-list-header>
+            <ion-label>Neues Envato Item</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Interne Bezeichnung</ion-label>
+            <ion-input [(ngModel)]="envato.name" name="envato_name" type="text" spellcheck="false" autocapitalize="off" placeholder="Hier eintragen"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Envato Item ID</ion-label>
+            <ion-input [(ngModel)]="envato.id" name="envato_id" type="text" spellcheck="false" autocapitalize="off" placeholder="Hier eintragen"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked" color="primary">Envato Lizenztyp</ion-label>
+            <ion-select [(ngModel)]="envato.type" name="envato_type" placeholder="Lizenztyp" class="start-left" required>
+              <ion-select-option value="Regular License">Regular License</ion-select-option>
+              <ion-select-option value="Extended License">Extended License</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+        <ion-row responsive-sm>
+          <ion-col>
+            <ion-button (click)="addEnvatoItem(envatoForm)" expand="block">Erstellen</ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button (click)="editEnvato = false" color="light" expand="block">Abbrechen</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ng-container>
+
+    <ng-container *ngIf="editLicensenumber">
+        <form #licenseForm="ngForm">
+          <ion-list no-lines>
+            <ion-item>
+              <ion-label position="stacked" color="primary">Email-Adresse des Nutzers (optional)</ion-label>
+              <ion-input [(ngModel)]="userEmail" name="licensenumber_email" type="email" spellcheck="false" autocapitalize="off" placeholder="Hier eintragen">
+              </ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label color="primary">Email an Nutzer mit Lizenz senden?</ion-label>
+              <ion-toggle slot="end" [(ngModel)]="userSendEmail" name="user_send_mail"></ion-toggle>
+            </ion-item>
+          </ion-list>
+  
+  
+          <ion-row responsive-sm>
+            <ion-col>
+              <ion-button (click)="addLicensenumber()" expand="block">Lizenzcode erstellen</ion-button>
+            </ion-col>
+  
+            <ion-col>
+              <ion-button (click)="editLicensenumber = false" color="light" expand="block">Abbrechen</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+  
+      </ng-container>
+
+    <form #productForm="ngForm" *ngIf="editLicense">
+      <ion-list no-lines>
+        <ion-item>
+          <ion-label position="stacked" color="primary">Lizenzname</ion-label>
+          <ion-input [(ngModel)]="licenseData.name" name="name" type="text" spellcheck="false" autocapitalize="off" placeholder="Name der Lizenz"
+            required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Wie lange ist die Lizenz gültig (in Tagen) - 0 = unbegrenzt</ion-label>
+          <ion-input [(ngModel)]="licenseData.validTime" name="validTime" type="number" placeholder="Zahl eingeben" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Wie lange soll Support möglich sein (in Tagen) - 0 = unbegrenzt</ion-label>
+          <ion-input [(ngModel)]="licenseData.supportTime" name="supportTime" type="number" placeholder="Zahl eingeben" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Auf wievielen Seiten darf das Produkt installiert werden? - 0 = unbegrenzt</ion-label>
+          <ion-input [(ngModel)]="licenseData.volume" name="volume" type="number" placeholder="Zahl eingeben" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked" color="primary">Feature (mit Komma trennen - ohne Leerzeichen)</ion-label>
+          <ion-input [(ngModel)]="features" name="features" type="text" spellcheck="false" autocapitalize="off" placeholder="Eingeben">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+
+      <ion-row responsive-sm>
+        <ion-col>
+          <ion-button (click)="updateLicense(productForm)" expand="block">Update</ion-button>
+        </ion-col>
+
+        <ion-col>
+          <ion-button (click)="editLicense = false" color="light" expand="block">Abbrechen</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card-content>
+
+  <ion-button class="m-1" *ngIf="!editLicensenumber" (click)="editLicensenumber = true" color="primary" expand="block">Lizenznummer erstellen</ion-button>
+</ion-card>

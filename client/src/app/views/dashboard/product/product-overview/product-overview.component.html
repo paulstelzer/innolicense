@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Alle Produkte</ion-title>
+    <ion-buttons slot="end">
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="light">
+  <ion-grid>
+    <ion-row justify-content-end *ngIf="!createProduct">
+      <ion-col>
+        <ion-button (click)="initProduct()">
+          Neues Produkt anlegen
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngIf="!createProduct">
+
+    <ion-item-sliding class="p-2 m-2 item-custom-background" *ngFor="let p of products$ | async">
+      <ion-item [detail]="true" button (click)="openProduct(p.id)">
+        <ion-label>{{p.name}}</ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deleteProduct(p.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-card color="white" *ngIf="createProduct">
+    <ion-card-content>
+      <form #productForm="ngForm">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-label position="stacked" color="primary">Produktname</ion-label>
+            <ion-input [(ngModel)]="productData.name" name="name" type="text" spellcheck="false" autocapitalize="off" placeholder="Name deines Produkts"
+              required>
+            </ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-row responsive-sm>
+          <ion-col>
+            <ion-button (click)="addProduct(productForm)" expand="block">Erstellen</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button (click)="initProduct()" color="light" expand="block">Abbrechen</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>
