@@ -47,7 +47,7 @@ export class TokenInterceptor implements HttpInterceptor {
               setTimeout(() => {
                 this.router.navigate(['login']);
               }, 1000);
-              
+
             }
 
           }

@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LeftSidebarComponent } from './left-sidebar.component';
+import { IonicModule } from '@ionic/angular';
+import { NgxsModule } from '@ngxs/store';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UserService } from '../../../modules/user/services/user.service';
 
 describe('LeftSidebarComponent', () => {
   let component: LeftSidebarComponent;
@@ -8,9 +12,11 @@ describe('LeftSidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LeftSidebarComponent ]
+      declarations: [LeftSidebarComponent],
+      imports: [NgxsModule.forRoot(), IonicModule.forRoot(), RouterTestingModule],
+      providers: [UserService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

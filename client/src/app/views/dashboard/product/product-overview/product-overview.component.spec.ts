@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductOverviewComponent } from './product-overview.component';
+import { SharedModule } from '../../../../shared/shared.module';
+import { ProductsModule } from '../../../../modules/products/products.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NgxsModule } from '@ngxs/store';
+import { IonicModule } from '@ionic/angular';
 
 describe('ProductOverviewComponent', () => {
   let component: ProductOverviewComponent;
@@ -8,9 +13,10 @@ describe('ProductOverviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductOverviewComponent ]
+      declarations: [ProductOverviewComponent],
+      imports: [SharedModule, ProductsModule, IonicModule.forRoot(), NgxsModule.forRoot(), RouterTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
