@@ -15,10 +15,10 @@ import { platformEnvironment } from '../../../../environments/constants';
 })
 export class LeftSidebarComponent implements OnInit {
   platformName: string = platformEnvironment.platform.name;
-  
+
   loggedIn = false;
   isVendor = false;
-  
+
   @Select(UserState.getUser) currentUser$: Observable<UserModel>;
   constructor(
     private menu: MenuController,
@@ -32,7 +32,7 @@ export class LeftSidebarComponent implements OnInit {
     this.isVendor = this.store.selectSnapshot(UserState.isVendor);
   }
 
-  
+
   async disable(menuId) {
     //this.menu.nativeElement.disabled = !this.menu.nativeElement.disabled;
 
@@ -46,8 +46,7 @@ export class LeftSidebarComponent implements OnInit {
   }
 
   async goTo(link) {
-    //this.router.navigate([link]);
-    this.nav.goForward(link);
+    this.router.navigate([link]);
   }
 
   signOut() {

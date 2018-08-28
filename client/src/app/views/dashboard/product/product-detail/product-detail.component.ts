@@ -4,7 +4,7 @@ import { ProductsState } from '../../../../modules/products/store/product/produc
 import { Component, OnInit } from '@angular/core';
 import { Store, Select, Actions, ofActionSuccessful } from '@ngxs/store';
 import { ProductModel } from '../../../../modules/products/store/product/products.model';
-import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { LicenseModel } from '../../../../modules/products/store/license/license.model';
 import { AddLicense, DeleteLicense, AddedLicense, RefreshLicenses } from '../../../../modules/products/store/license/license.actions';
 import { LicenseState } from '../../../../modules/products/store/license/license.state';
@@ -38,6 +38,7 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private store: Store,
+    private router: Router,
     private actions: Actions,
     private route: ActivatedRoute,
     private nav: NavController
@@ -93,7 +94,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   openLicense(id) {
-    this.nav.goForward(`product/${this.productId}/license/${id}`)
+    //this.nav.goForward(`product/${this.productId}/license/${id}`);
+    this.router.navigate([`product/${this.productId}/license/${id}`]);
   }
 
 }
