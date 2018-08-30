@@ -1,3 +1,15 @@
+#### 1.0.3 (2018-08-30)
+
+##### Chores
+
+*  Updated packages ([42876933](git+https://paulstelzer@bitbucket.org/paulstelzer/innolicense.git/commits/428769336dc1c188c2b5e7f157253609604ecbfa))
+
+##### Bug Fixes
+
+* **client:**
+  *  Use of navigateForward from Ionic NavController ([5bad76a2](git+https://paulstelzer@bitbucket.org/paulstelzer/innolicense.git/commits/5bad76a295f712837c5993fca0c70206471580a7))
+  *  Breaking change for ionic4@beta6 ([3bc5be9c](git+https://paulstelzer@bitbucket.org/paulstelzer/innolicense.git/commits/3bc5be9cd1341975a24f85cd59fc0eca6bc428ae))
+
 #### 1.0.2 (2018-08-29)
 
 ##### Chores
