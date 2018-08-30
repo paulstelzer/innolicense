@@ -94,8 +94,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   openLicense(id) {
-    //this.nav.goForward(`product/${this.productId}/license/${id}`);
-    this.router.navigate([`product/${this.productId}/license/${id}`]);
+    this.nav.navigateForward([`product/${this.productId}/license/${id}`]);
+    //this.router.navigate([`product/${this.productId}/license/${id}`]);
   }
 
 }

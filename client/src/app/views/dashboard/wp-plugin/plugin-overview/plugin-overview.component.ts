@@ -72,8 +72,8 @@ export class PluginOverviewComponent implements OnInit {
   }
 
   openProduct(id) {
-    //this.nav.goForward('/plugin/' + id, true);
-    this.router.navigate([`plugin/${id}`]);
+    this.nav.navigateForward([`plugin/${id}`], true);
+    //this.router.navigate([`plugin/${id}`]);
     
   }
 

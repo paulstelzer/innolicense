@@ -54,8 +54,8 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   openProduct(id) {
-    //this.nav.goForward('/product/' + id, true);
-    this.router.navigate([`product/${id}`]);
+    this.nav.navigateForward([`product/${id}`], true);
+   // this.router.navigate([`product/${id}`]);
   }
 
   deleteProduct(id) {

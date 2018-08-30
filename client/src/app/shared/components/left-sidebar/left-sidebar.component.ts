@@ -44,9 +44,10 @@ export class LeftSidebarComponent implements OnInit {
   async open(menuId) {
     this.menu.open(menuId)
   }
-
+  
   async goTo(link) {
-    this.router.navigate([link]);
+    // this.router.navigate([link]);
+    this.nav.navigateForward([link], true);
   }
 
   signOut() {
